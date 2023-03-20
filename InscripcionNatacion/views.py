@@ -29,6 +29,24 @@ def crear_usuario(request):
 
 
 
+def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
+    save_usuario = Usuario(
+        nombre=nombre,
+        nombre_usuario=nombre_usuario,
+        contrasenia=contrasenia,
+        email=email
+    )
+    save_usuario.save()
+    context = {
+        "nombre": nombre,
+        "nombre_usuario": nombre_usuario,
+        "contrasenia":contrasenia,
+        "email": email
+    }
+    return render(request, "InscripcionNatacion/guardar_usuario.html", context)
+
+
+
 #Lista de usuario
 def lista_usuarios(request):
     usuarios = Usuario.objects.all()
