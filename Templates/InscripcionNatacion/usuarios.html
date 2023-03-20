@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block cambia_contenido %}
+{#    Buscar curso#}
+    <br><hr>
+    <form action="{% url 'INBuscarUsuarios' %}">
+        {{ form_busqueda.as_p }}
+        <input type="submit" value="Buscar">
+    </form>
+
+    <hr><br>
+    <a href="{% url 'INCrearUsuario' %}">Creacion del usuario</a>
+
+
+<!--Ver cursos   -->
+    <hr><br>
+    {% if usuarios %}
+        {% for usuario in usuarios %}
+            <p>
+                curso: {{ usuario.nombre }} camada: {{ usuario.camada }}
+                <a href="{% url 'INEliminarUsuario' usuario.id %}">Eliminar usuario</a>
+                <a href="{% url 'INEditarUsuario' usuario.id %}">Editar usuario</a>
+            </p>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <h1>No hay cursos en el momento</h1>
+    {% endif %}
+
+{% endblock %}

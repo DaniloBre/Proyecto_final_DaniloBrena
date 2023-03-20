@@ -1,0 +1,18 @@
+
+{% extends "base.html" %}
+
+
+{% block cambia_contenido %}
+    {% if usuarios %}
+
+        {% for usuario in usuarios %}
+            <p>{{ usuario }}</p>
+        {% endfor %}
+
+    {% else %}
+        <h3>no hay cursos filtrados</h3>
+
+    {% endif %}
+
+
+{% endblock %}

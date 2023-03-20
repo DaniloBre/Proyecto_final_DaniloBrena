@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block cambia_contenido %}
+    {#Creacion de curso#}
+    <form action="{% url 'INEditarUsuario' camada %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Editar">
+    </form>
+{% endblock %}
