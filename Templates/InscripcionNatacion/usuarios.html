@@ -18,15 +18,17 @@
     {% if usuarios %}
         {% for usuario in usuarios %}
             <p>
-                curso: {{ usuario.nombre }} camada: {{ usuario.camada }}
-                <a href="{% url 'INEliminarUsuario' usuario.id %}">Eliminar usuario</a>
-                <a href="{% url 'INEditarUsuario' usuario.id %}">Editar usuario</a>
+                Nombre: {{ usuario.nombre }} Usuario: {{ usuario.nombre_usuario }}
+                <a href="{% url 'INEliminarUsuario' usuario.nombre_usuario %}">Eliminar usuario</a>
+                <a href="{% url 'INEditarUsuario' usuario.nombre_usuario %}">Editar usuario</a>
             </p>
 
             <hr>
         {% endfor %}
+
     {% else %}
         <h1>No hay cursos en el momento</h1>
+
     {% endif %}
 
 {% endblock %}

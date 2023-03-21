@@ -6,7 +6,6 @@ urlpatterns = [
     #Usuario
     path('usuarios', usuarios, name='INUsuarios'),
     path('usuarios/crear', crear_usuario, name='INCrearUsuario'),
-    path('usuarios/', lista_usuarios, name='INListarUsuarios'),
     path('usuarios/buscar/', buscar_usuarios, name='INBuscarUsuarios'),
     path('usuarios/editar/<nombre_usuario>/', editar_usuario, name='INEditarUsuario'),
     path('usuarios/eliminar/<nombre_usuario>/', eliminar_usuario, name='INEliminarUsuario'),

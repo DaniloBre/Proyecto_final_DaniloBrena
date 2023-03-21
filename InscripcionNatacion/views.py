@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from InscripcionNatacion.models import Usuario, Profesor, Clase
-from InscripcionNatacion.forms import CrearUsuarioForm, EditarUsuarioForm, CrearClaseForm, EditarClaseForm, BuscarUsuarioForm
+from InscripcionNatacion.forms import CrearUsuarioForm, CrearClaseForm, EditarClaseForm, BuscarUsuarioForm
 from django.contrib import messages
 
 
@@ -10,25 +10,35 @@ def usuarios(request):
     all_usuario = Usuario.objects.all()
     context = {
         "usuario": all_usuario,
-        "form_busqueda": BuscarUsuarioForm(),
+        "busqueda_form": BuscarUsuarioForm(),
     }
-    return render(request, "AppCoder/cursos.html", context=context)
+    return render(request, "InscripcionNatacion/usuarios.html", context=context)
+
 
 
 #Creacion de usuario
 def crear_usuario(request):
     if request.method == 'POST':
-        form = CrearUsuarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Usuario creado exitosamente')
-            return redirect('listar_usuarios')
-    else:
-        form = CrearUsuarioForm()
-    return render(request, 'InscripcionNatacion/crear_usuario.html', {'form': form})
+        formulario = CrearUsuarioForm(request.POST)
+
+        if formulario.is_valid():
+            info_usuario = formulario.cleaned_data
+            save_usuario = Usuario(
+                nombre=info_usuario['nombre'],
+                nombre_usuario=info_usuario['nombre_usuario'],
+                contrasenia=info_usuario['contrasenia'],
+                email=info_usuario['email'],
+            )
+            save_usuario.save()
+            return  redirect("INUsuarios")
+    context ={
+        "formulario" : CrearUsuarioForm()
+    }
+    return render(request, 'InscripcionNatacion/crear_usuario.html', context)
 
 
 
+#Usuario que ya fue creado
 def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
     save_usuario = Usuario(
         nombre=nombre,
@@ -40,54 +50,64 @@ def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
     context = {
         "nombre": nombre,
         "nombre_usuario": nombre_usuario,
-        "contrasenia":contrasenia,
+        "contrasenia": contrasenia,
         "email": email
     }
     return render(request, "InscripcionNatacion/guardar_usuario.html", context)
 
 
 
-#Lista de usuario
-def lista_usuarios(request):
-    usuarios = Usuario.objects.all()
-    return render(request, 'InscripcionNatacion/listar_usuarios.html', {'usuarios': usuarios})
-
-
-
 #Busqueda de usuario
 def buscar_usuarios(request):
-    query = request.GET.get('q')
-    if query:
-        usuarios = Usuario.objects.filter(username__icontains=query)
-        return render(request, 'InscripcionNatacion/listar_usuarios.html', {'usuarios': usuarios})
-    else:
-        return redirect('listar_usuarios')
+    usaurio_form = BuscarUsuarioForm(request.get)
+    if usaurio_form.is_valid():
+        info_usuario = usaurio_form.cleaned_data
+        filtra_usuario = Usuario.object.filter(nombre__icontains=info_usuario['nombre_usuario'])
+        context ={
+            "nombre_usuario": filtra_usuario
+        }
+
+        return render(request, "InscripcionNatacion/buscar_usuarios.html", context=context)
 
 
 
 #Edicion de usuario
 def editar_usuario(request, nombre_usuario):
-    usuario = get_object_or_404(Usuario, username=nombre_usuario)
+    get_usuario = Usuario.object.get(nombre_usuario=nombre_usuario)
+
     if request.method == 'POST':
-        form = EditarUsuarioForm(request.POST, instance=usuario)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Usuario actualizado exitosamente')
-            return redirect('listar_usuarios')
-    else:
-        form = EditarUsuarioForm(instance=usuario)
-    return render(request, 'InscripcionNatacion/editar_usuario.html', {'form': form, 'usuario': usuario})
+        usaurio_form = CrearUsuarioForm(request.POST)
+        if usaurio_form.is_valid():
+            info_usuario = usaurio_form.cleaned_data
+            get_usuario.nombre = info_usuario['nombre']
+            get_usuario.nombre_usuario = info_usuario['nombre_usuario']
+            get_usuario.contrasenia = info_usuario['contrasenia']
+            get_usuario.mail = info_usuario['mail']
+
+            get_usuario.save()
+            return redirect("INUsuarios")
+
+    context = {
+        "nombre_usuario": nombre_usuario,
+        "formulario": CrearUsuarioForm(initial={
+            "nombre": get_usuario.nombre,
+            "nombre_usuario": get_usuario.nombre_usuario,
+            "contrasenia": get_usuario.contrasenia,
+            "mail": get_usuario.mail
+        })
+    }
+
+    return redirect(request, "InscripcionNatacion/editar_usuario.html", context=context)
+
 
 
 
 #Eliminacion de usuario
 def eliminar_usuario(request, nombre_usuario):
-    usuario = get_object_or_404(Usuario, username=nombre_usuario)
-    if request.method == 'POST':
-        usuario.delete()
-        messages.success(request, 'Usuario eliminado exitosamente')
-        return redirect('listar_usuarios')
-    return render(request, 'InscripcionNatacion/eliminar_usuario.html', {'usuario': usuario})
+    get_usuario = Usuario.objetos.get(nombre_usuario=nombre_usuario)
+    get_usuario.delete()
+
+    return redirect("INUsuarios")
 
 
 
@@ -135,6 +155,7 @@ def editar_clase(request, id):
 
 # Profesores
 def lista_profesores(request):
-    profesores = Profesor.objects.all()
-    return render
+
+
+    return render(request, "base.html")
 
