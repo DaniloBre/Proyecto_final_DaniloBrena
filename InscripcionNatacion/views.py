@@ -122,7 +122,7 @@ def crear_clase(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Clase creada exitosamente')
-            return redirect('listar_clases')
+            return redirect('lista_clases')
     else:
         form = CrearClaseForm()
     return render(request, 'InscripcionNatacion/crear_clase.html', {'form': form})
@@ -132,7 +132,7 @@ def crear_clase(request):
 #Lista de clase
 def lista_clases(request):
     clases = Clase.objects.all()
-    return render(request, 'InscripcionNatacion/listar_clases.html', {'clases': clases})
+    return render(request, 'InscripcionNatacion/lista_clases.html', {'clases': clases})
 
 
 
@@ -144,7 +144,7 @@ def editar_clase(request, id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Clase actualizada exitosamente')
-            return redirect('listar_clases')
+            return redirect('lista_clases')
     else:
         form = EditarClaseForm(instance=clase)
     return render(request, 'InscripcionNatacion/editar_clase.html', {'form': form, 'clase': clase})

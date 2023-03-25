@@ -2,7 +2,7 @@
 
 
 {% block cambia_contenido %}
-{#    Buscar curso#}
+<!--  Buscar curso   -->
     <br><hr>
     <form action="{% url 'INBuscarUsuarios' %}">
         {{ form_busqueda.as_p }}
@@ -13,12 +13,12 @@
     <a href="{% url 'INCrearUsuario' %}">Creacion del usuario</a>
 
 
-<!--Ver cursos   -->
+<!--  Ver cursos   -->
     <hr><br>
     {% if usuarios %}
         {% for usuario in usuarios %}
             <p>
-                Nombre: {{ usuario.nombre }} Usuario: {{ usuario.nombre_usuario }}
+                Nombre: {{ usuario.nombre }} Nombre de usuario: {{ usuario.nombre_usuario }}
                 <a href="{% url 'INEliminarUsuario' usuario.nombre_usuario %}">Eliminar usuario</a>
                 <a href="{% url 'INEditarUsuario' usuario.nombre_usuario %}">Editar usuario</a>
             </p>
@@ -27,7 +27,6 @@
         {% endfor %}
 
     {% else %}
-        <h1>No hay cursos en el momento</h1>
 
     {% endif %}
 
