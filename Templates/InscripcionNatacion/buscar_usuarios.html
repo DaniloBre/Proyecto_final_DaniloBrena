@@ -3,14 +3,14 @@
 
 
 {% block cambia_contenido %}
-    {% if usuarios %}
+    {% if nombre_usuario %}
 
-        {% for usuario in usuarios %}
+        {% for crear_usuario in nombre_usuario %}
             <p>{{ usuario }}</p>
         {% endfor %}
 
     {% else %}
-        <h3>no hay cursos filtrados</h3>
+        <h3>No hay usuario filtrados</h3>
 
     {% endif %}
 

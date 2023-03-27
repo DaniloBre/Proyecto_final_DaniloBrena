@@ -6,9 +6,11 @@ from InscripcionNatacion.models import Clase, Profesor, Usuario
 #Usuario
 #Creacion del usuario en el formulario
 class CrearUsuarioForm(forms.ModelForm):
-    class Meta:
-        model = Usuario
-        fields = "__all__"
+
+    nombre = forms.CharField(min_length=3, max_length=40)
+    nombre_usuario = forms.CharField(min_length=3, max_length=40)
+    contrasenia = forms.CharField(min_length=3, max_length=40)
+    mail = forms.CharField(min_length=3, max_length=40)
 
 
 
@@ -31,6 +33,6 @@ class EditarClaseForm(forms.ModelForm):
 #Buscar Usuario
 class BuscarUsuarioForm(forms.Form):
 
-    nombre = forms.CharField(min_length=3, max_length=40)
+    nombre_usuario = forms.CharField(min_length=3, max_length=40)
 
 

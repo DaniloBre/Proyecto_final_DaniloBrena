@@ -2,11 +2,16 @@
 
 {% block title %}Crear usuario{% endblock %}
 
-{% block content %}
+{% block cambia_contenido %}
+
   <h1>Crear usuario</h1>
-  <form method="POST">
+
+  <!--Creacion del usuario-->
+  <form action="{% url 'INCrearUsuario' %}" method="POST" >
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Crear</button>
+    <input  type="submit" value="Crear">
+
   </form>
+
 {% endblock %}

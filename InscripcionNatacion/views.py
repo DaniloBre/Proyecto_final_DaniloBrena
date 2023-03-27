@@ -16,7 +16,7 @@ def usuarios(request):
 
 
 
-#Creacion de usuario
+#Usuario que ya fue creado
 def crear_usuario(request):
     if request.method == 'POST':
         formulario = CrearUsuarioForm(request.POST)
@@ -30,15 +30,19 @@ def crear_usuario(request):
                 email=info_usuario['email'],
             )
             save_usuario.save()
-            return  redirect("INUsuarios")
+
+    all_usario = Usuario.objects.all()
     context ={
-        "formulario" : CrearUsuarioForm()
+        "usuario": all_usario,
+        "formulario": CrearUsuarioForm(),
+        "form_busqueda": BuscarUsuarioForm(),
     }
     return render(request, 'InscripcionNatacion/crear_usuario.html', context)
 
 
 
-#Usuario que ya fue creado
+
+#Creacion de usuario
 def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
     save_usuario = Usuario(
         nombre=nombre,
@@ -62,7 +66,7 @@ def buscar_usuarios(request):
     usaurio_form = BuscarUsuarioForm(request.get)
     if usaurio_form.is_valid():
         info_usuario = usaurio_form.cleaned_data
-        filtra_usuario = Usuario.object.filter(nombre__icontains=info_usuario['nombre_usuario'])
+        filtra_usuario = Usuario.objects.filter(nombre__icontains=info_usuario['nombre_usuario'])
         context ={
             "nombre_usuario": filtra_usuario
         }
@@ -73,7 +77,7 @@ def buscar_usuarios(request):
 
 #Edicion de usuario
 def editar_usuario(request, nombre_usuario):
-    get_usuario = Usuario.object.get(nombre_usuario=nombre_usuario)
+    get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
 
     if request.method == 'POST':
         usaurio_form = CrearUsuarioForm(request.POST)
@@ -104,7 +108,7 @@ def editar_usuario(request, nombre_usuario):
 
 #Eliminacion de usuario
 def eliminar_usuario(request, nombre_usuario):
-    get_usuario = Usuario.objetos.get(nombre_usuario=nombre_usuario)
+    get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
     get_usuario.delete()
 
     return redirect("INUsuarios")
