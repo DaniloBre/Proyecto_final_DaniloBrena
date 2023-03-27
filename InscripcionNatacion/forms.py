@@ -10,7 +10,7 @@ class CrearUsuarioForm(forms.ModelForm):
     nombre = forms.CharField(min_length=3, max_length=40)
     nombre_usuario = forms.CharField(min_length=3, max_length=40)
     contrasenia = forms.CharField(min_length=3, max_length=40)
-    mail = forms.CharField(min_length=3, max_length=40)
+    mail = forms.EmailField()
 
 
 

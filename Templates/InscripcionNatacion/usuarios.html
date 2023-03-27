@@ -2,7 +2,7 @@
 
 
 {% block cambia_contenido %}
-<!--  Buscar curso   -->
+<!--  Para buscar lso usuarios   -->
     <br><hr>
     <form action="{% url 'INBuscarUsuarios' %}">
         {{ form_busqueda.as_p }}
@@ -13,7 +13,7 @@
     <a href="{% url 'INCrearUsuario' %}">Creacion del usuario</a>
 
 
-<!--  Ver cursos   -->
+<!--  Para ver los usuario   -->
     <hr><br>
     {% if usuarios %}
         {% for usuario in usuarios %}
@@ -27,6 +27,8 @@
         {% endfor %}
 
     {% else %}
+
+    <h3>No hay usuarios en este momento</h3>
 
     {% endif %}
 

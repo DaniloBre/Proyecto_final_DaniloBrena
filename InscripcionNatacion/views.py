@@ -30,11 +30,9 @@ def crear_usuario(request):
                 email=info_usuario['email'],
             )
             save_usuario.save()
+            return redirect("INUsuarios")
 
-    all_usario = Usuario.objects.all()
     context ={
-        "usuario": all_usario,
-        "formulario": CrearUsuarioForm(),
         "form_busqueda": BuscarUsuarioForm(),
     }
     return render(request, 'InscripcionNatacion/crear_usuario.html', context)
@@ -118,6 +116,14 @@ def eliminar_usuario(request, nombre_usuario):
 
 
 # Clases
+def clase(request):
+    all_clase = Usuario.objects.all()
+    context = {
+        "clase": all_clase,
+        "busqueda_form": BuscarclaseForm(),
+    }
+    return render(request, "InscripcionNatacion/usuarios.html", context=context)
+
 
 #Creacion de clase
 def crear_clase(request):
