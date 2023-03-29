@@ -5,7 +5,7 @@
 <!--  Para buscar lso usuarios   -->
     <br><hr>
     <form action="{% url 'INBuscarUsuarios' %}">
-        {{ form_busqueda.as_p }}
+        {{ busqueda_form.as_p }}
         <input type="submit" value="Buscar">
     </form>
 
@@ -28,7 +28,7 @@
 
     {% else %}
 
-    <h3>No hay usuarios en este momento</h3>
+        <h3>No hay usuarios en este momento</h3>
 
     {% endif %}
 

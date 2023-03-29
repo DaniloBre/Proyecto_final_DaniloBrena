@@ -3,9 +3,9 @@
 
 
 {% block cambia_contenido %}
-    {% if nombre_usuario %}
+    {% if usuarios %}
 
-        {% for crear_usuario in nombre_usuario %}
+        {% for usuario in usuarios %}
             <p>{{ usuario }}</p>
         {% endfor %}
 

@@ -7,12 +7,13 @@ from django.contrib import messages
 
 # Usuario
 def usuarios(request):
-    all_usuario = Usuario.objects.all()
+    all_usuarios = Usuario.objects.all()
     context = {
-        "usuario": all_usuario,
+        "usuarios": all_usuarios,
         "busqueda_form": BuscarUsuarioForm(),
     }
     return render(request, "InscripcionNatacion/usuarios.html", context=context)
+
 
 
 
@@ -50,10 +51,7 @@ def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
     )
     save_usuario.save()
     context = {
-        "nombre": nombre,
         "nombre_usuario": nombre_usuario,
-        "contrasenia": contrasenia,
-        "email": email
     }
     return render(request, "InscripcionNatacion/guardar_usuario.html", context)
 
@@ -62,9 +60,10 @@ def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
 #Busqueda de usuario
 def buscar_usuarios(request):
     usaurio_form = BuscarUsuarioForm(request.get)
+
     if usaurio_form.is_valid():
         info_usuario = usaurio_form.cleaned_data
-        filtra_usuario = Usuario.objects.filter(nombre__icontains=info_usuario['nombre_usuario'])
+        filtra_usuario = Usuario.objects.filter(nombre_usuario__icontains=info_usuario['nombre_usuario'])
         context ={
             "nombre_usuario": filtra_usuario
         }
