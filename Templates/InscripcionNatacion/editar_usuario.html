@@ -2,10 +2,12 @@
 
 
 {% block cambia_contenido %}
-    {#Creacion de curso#}
-    <form action="{% url 'INEditarUsuario' camada %}" method="post">
+
+    <!--Edicion del curso-->
+    <form action="{% url 'INEditarUsuario' nombre_usuario %}" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form_edit.as_p }}
         <input type="submit" value="Editar">
     </form>
+
 {% endblock %}

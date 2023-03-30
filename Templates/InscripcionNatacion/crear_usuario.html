@@ -9,7 +9,7 @@
   <!--Creacion del usuario-->
   <form action="{% url 'INCrearUsuario' %}" method="POST" >
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form_usuario.as_p }}
     <input  type="submit" value="Crear">
 
   </form>

@@ -34,7 +34,7 @@ def crear_usuario(request):
             return redirect("INUsuarios")
 
     context ={
-        "form_busqueda": BuscarUsuarioForm(),
+        "form_usuario": CrearUsuarioForm(),
     }
     return render(request, 'InscripcionNatacion/crear_usuario.html', context)
 
@@ -78,27 +78,29 @@ def editar_usuario(request, nombre_usuario):
 
     if request.method == 'POST':
         usaurio_form = CrearUsuarioForm(request.POST)
+
         if usaurio_form.is_valid():
             info_usuario = usaurio_form.cleaned_data
+
             get_usuario.nombre = info_usuario['nombre']
             get_usuario.nombre_usuario = info_usuario['nombre_usuario']
             get_usuario.contrasenia = info_usuario['contrasenia']
-            get_usuario.mail = info_usuario['mail']
+            get_usuario.email = info_usuario['email']
 
             get_usuario.save()
             return redirect("INUsuarios")
 
     context = {
         "nombre_usuario": nombre_usuario,
-        "formulario": CrearUsuarioForm(initial={
+        "form_edit": CrearUsuarioForm(initial={
             "nombre": get_usuario.nombre,
             "nombre_usuario": get_usuario.nombre_usuario,
             "contrasenia": get_usuario.contrasenia,
-            "mail": get_usuario.mail
+            "email": get_usuario.email
         })
     }
 
-    return redirect(request, "InscripcionNatacion/editar_usuario.html", context=context)
+    return render(request, "InscripcionNatacion/editar_usuario.html", context=context)
 
 
 
