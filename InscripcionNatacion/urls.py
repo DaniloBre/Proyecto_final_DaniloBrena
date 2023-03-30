@@ -12,11 +12,11 @@ urlpatterns = [
     path('usuarios/eliminar/<nombre_usuario>', eliminar_usuario, name='INEliminarUsuario'),
 
     #Clase
-    path('clase/crear/', crear_clase, name='INCrearClase'),
-    path('clase/', lista_clases, name='INListarClases'),
+    path('clase', clase, name='INClase'),
+    path('clase/crear', crear_clase, name='INCrearClase'),
     path('clase/editar/<id>/', editar_usuario, name='INEditarClase'),
 
     #Profesores
-    path('profesor/', lista_profesores, name='INListarProfesores'),
+    path('profesor', profesores, name='INProfesores'),
 
 ]

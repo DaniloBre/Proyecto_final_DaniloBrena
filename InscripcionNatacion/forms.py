@@ -20,6 +20,13 @@ class CrearClaseForm(forms.ModelForm):
         fields = "__all__"
 
 
+#Profesor
+class CrearProfesorForm(forms.ModelForm):
+    class Meta:
+        model = Profesor
+        fields = "__all__"
+
+
 
 class EditarClaseForm(forms.ModelForm):
     class Meta:

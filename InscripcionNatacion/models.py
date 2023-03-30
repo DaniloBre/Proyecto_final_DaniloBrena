@@ -52,10 +52,10 @@ class Clase(models.Model):
 
 #Modelo elecion de profesor
 class Profesor(models.Model):
-    nombre = models.CharField(max_length=30)
-    apellido = models.CharField(max_length=30)
+    nombre_profe = models.CharField(max_length=30)
+    apellido_profe = models.CharField(max_length=30)
 
 
     def __str__(self):
-        return f"Profesor: {self.nombre} {self.apellido}"
+        return f"Profesor: {self.nombre_profe} {self.apellido_profe}"
 

@@ -1,6 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from InscripcionNatacion.models import Usuario, Profesor, Clase
-from InscripcionNatacion.forms import CrearUsuarioForm, CrearClaseForm, EditarClaseForm, BuscarUsuarioForm
+from InscripcionNatacion.forms import (CrearUsuarioForm,
+                                       CrearClaseForm,
+                                       EditarClaseForm,
+                                       BuscarUsuarioForm
+                                       )
 from django.contrib import messages
 
 
@@ -103,14 +107,14 @@ def editar_usuario(request, nombre_usuario):
     return render(request, "InscripcionNatacion/editar_usuario.html", context=context)
 
 
-
-
 #Eliminacion de usuario
 def eliminar_usuario(request, nombre_usuario):
     get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
     get_usuario.delete()
 
     return redirect("INUsuarios")
+
+
 
 
 
@@ -140,13 +144,6 @@ def crear_clase(request):
 
 
 
-#Lista de clase
-def lista_clases(request):
-    clases = Clase.objects.all()
-    return render(request, 'InscripcionNatacion/lista_clases.html', {'clases': clases})
-
-
-
 #Edicion de clase
 def editar_clase(request, id):
     clase = get_object_or_404(Clase, id=id)
@@ -164,9 +161,16 @@ def editar_clase(request, id):
 
 
 
+
+
+
 # Profesores
-def lista_profesores(request):
+def profesores(request):
+    all_profesores = Profesor.objects.all()
+    context = {
+        "profesores": all_profesores,
+        "busqueda_form": BuscarclaseForm(),
+    }
 
-
-    return render(request, "base.html")
+    return render(request, "base.html", context=context)
 
