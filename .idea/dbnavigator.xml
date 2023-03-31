@@ -36,10 +36,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="827cfeef-016c-437a-9789-2dab8d6679df" object-ref="schemas/main/tables/InscripcionNatacion_clase" />
-      <object connection-id="827cfeef-016c-437a-9789-2dab8d6679df" object-ref="schemas/main/tables/InscripcionNatacion_profesor" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_usuario" active-filter-id="787343e2-4e96-453f-85d3-2f62419d9f94">
