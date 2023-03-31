@@ -13,20 +13,20 @@ urlpatterns = [
 
 
     #Clase
-    path('clase', clases, name='INClases'),
-    path('clase/crear', crear_clase, name='INCrearClase'),
-    path('clase/<dia>/<horario>/', clase_creada, name='INClaseCreada'),
-    path('buscar_clase', buscar_clase, name='INBuscarCreada'),
-    path('clase/editar/<dia>/', editar_usuario, name='INEditarClase'),
-    path('clase/eliminar/<dia>/', eliminar_clase, name='INEliminarClase'),
+    path('clases', clases, name='INClases'),
+    path('clases/crear', crear_clase, name='INCrearClase'),
+    path('clases/<dia>/<horario>/', clase_creada, name='INClaseCreada'),
+    path('buscar_clases', buscar_clase, name='INBuscarCreada'),
+    path('clases/editar/<dia>/', editar_usuario, name='INEditarClase'),
+    path('clases/eliminar/<dia>/', eliminar_clase, name='INEliminarClase'),
 
 
     #Profesores
-    path('profesor', profesores, name='INProfesores'),
-    path('profesor/crear', crear_clase, name='INCrearProfesor'),
-    path('profesor/<nombre_profe>/<apellido_profe>/', clase_creada, name='INProfesorCreada'),
-    path('buscar_clase', buscar_clase, name='INBuscarProfesor'),
-    path('profesor/editar/<nombre_profe>/', editar_usuario, name='INEditarProfesor'),
-    path('profesor/eliminar/<nombre_profe>/', eliminar_clase, name='INEliminarProfesor'),
+    path('profesors', profesores, name='INProfesores'),
+    path('profesors/crear', crear_profesor, name='INCrearProfesor'),
+    path('profesors/<nombre_profe>/<apellido_profe>/', profesor_creada, name='INProfesorCreada'),
+    path('buscar_clases', buscar_profesor, name='INBuscarProfesor'),
+    path('profesors/editar/<nombre_profe>/', editar_profesor, name='INEditarProfesor'),
+    path('profesors/eliminar/<nombre_profe>/', eliminar_profesor, name='INEliminarProfesor'),
 
 ]

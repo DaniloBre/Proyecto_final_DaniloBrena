@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 
+{% block title %}Inscripcion a Natacion{% endblock %}
+
 {% block cambia_contenido %}
-<!--  Para buscar lso usuarios   -->
+<!--  Para buscar los usuarios   -->
     <br><hr>
     <form action="{% url 'INBuscarUsuarios' %}">
         {{ busqueda_form_usuario.as_p }}
@@ -46,7 +48,7 @@
                     <h3>No hay clases en este momento</h3>
 
                 {% endif %}
-                <br><br>
+                <br>
 
 
 

@@ -76,18 +76,16 @@ def editar_usuario(request, nombre_usuario):
     get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
 
     if request.method == 'POST':
-        usaurio_form = CrearUsuarioForm(request.POST)
 
-        if usaurio_form.is_valid():
-            info_usuario = usaurio_form.cleaned_data
+        info_usuario = request.POST
+        print(info_usuario)
+        get_usuario.nombre = info_usuario['nombre']
+        get_usuario.nombre_usuario = info_usuario['nombre_usuario']
+        get_usuario.contrasenia = info_usuario['contrasenia']
+        get_usuario.email = info_usuario['email']
 
-            get_usuario.nombre = info_usuario['nombre']
-            get_usuario.nombre_usuario = info_usuario['nombre_usuario']
-            get_usuario.contrasenia = info_usuario['contrasenia']
-            get_usuario.email = info_usuario['email']
-
-            get_usuario.save()
-            return redirect("INUsuarios")
+        get_usuario.save()
+        return redirect("INUsuarios")
 
     context = {
         "nombre_usuario": nombre_usuario,
@@ -120,7 +118,7 @@ def eliminar_usuario(request, nombre_usuario):
 def clases(request):
     all_clase = Clase.objects.all()
     context = {
-        "clase": all_clase,
+        "clases": all_clase,
         "busqueda_form_clase": BuscarClaseForm(),
     }
     return render(request, "InscripcionNatacion/usuarios.html", context=context)
@@ -183,16 +181,14 @@ def editar_clase(request, dia):
     get_clase = Clase.objects.get(dia=dia)
 
     if request.method == 'POST':
-        clase_form = CrearClaseForm(request.POST)
 
-        if clase_form.is_valid():
-            info_clase = clase_form.cleaned_data
+        info_clase = request.POST
+        print(info_clase)
+        get_clase.dia = info_clase['dia']
+        get_clase.horario = info_clase['horario']
 
-            get_clase.dia = info_clase['dia']
-            get_clase.horario = info_clase['horario']
-
-            get_clase.save()
-            return redirect('INUsuarios')
+        get_clase.save()
+        return redirect('INUsuarios')
 
     context ={
         "dia": dia,
@@ -238,7 +234,7 @@ def crear_profesor(request):
 
         if form_profe.is_valid():
             info_profe = form_profe.cleaned_data
-            save_profe = Clase(
+            save_profe = Profesor(
                 nombre_profe=info_profe['nombre_profe'],
                 apellido_profe=info_profe['apellido_profe'],
             )
@@ -287,16 +283,14 @@ def editar_profesor(request, nombre_profe):
     get_profesor = Profesor.objects.get(nombre_profe=nombre_profe)
 
     if request.method == 'POST':
-        clase_form = CrearClaseForm(request.POST)
 
-        if clase_form.is_valid():
-            info_profe = clase_form.cleaned_data
+        info_profe = request.POST
+        print(info_profe)
+        get_profesor.nombre_profe = info_profe['nombre_profe']
+        get_profesor.apellido_profe = info_profe['apellido_profe']
 
-            get_profesor.nombre_profe = info_profe['nombre_profe']
-            get_profesor.apellido_profe = info_profe['apellido_profe']
-
-            get_profesor.save()
-            return redirect('INUsuarios')
+        get_profesor.save()
+        return redirect('INUsuarios')
 
     context ={
         "nombre_profe": nombre_profe,
