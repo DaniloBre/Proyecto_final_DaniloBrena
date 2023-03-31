@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+
+{% block cambia_contenido %}
+
+    <!--Edicion de profesor-->
+    <form action="{% url 'INEditarProfesor' nombre_profe %}" method="post">
+        {% csrf_token %}
+        {{ form_edit_profe.as_p }}
+        <input type="submit" value="Cambiar profesor">
+    </form>
+
+{% endblock %}

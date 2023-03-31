@@ -5,24 +5,72 @@
 <!--  Para buscar lso usuarios   -->
     <br><hr>
     <form action="{% url 'INBuscarUsuarios' %}">
-        {{ busqueda_form.as_p }}
+        {{ busqueda_form_usuario.as_p }}
         <input type="submit" value="Buscar">
     </form>
 
+    <!--Para crear el usuario-->
     <hr><br>
     <a href="{% url 'INCrearUsuario' %}">Creacion del usuario</a>
 
 
-<!--  Para ver los usuario   -->
+<!--  Para ver los usuarios   -->
     <hr><br>
     {% if usuarios %}
         {% for usuario in usuarios %}
-            <p>
+            <div>
                 Nombre: {{ usuario.nombre }} - Nombre de usuario: {{ usuario.nombre_usuario }}
                 <br>
                 <a href="{% url 'INEliminarUsuario' usuario.nombre_usuario %}">Eliminar usuario</a>
                 <a href="{% url 'INEditarUsuario' usuario.nombre_usuario %}">Editar usuario</a>
-            </p>
+                <br><br>
+
+
+
+                <!--Para la creacion/selecion de la calse-->
+                <a href="{% url 'INCrearClase' %}">Crearcion de clase</a>
+                <!--  Para ver las clases   -->
+                {% if clases %}
+                    {% for clase in clases %}
+                        <p>
+                            Sus clases son los dias {{ clase.dia }} a las {{ clase.horario }} hs.
+                            <br>
+                            <a href="{% url 'INEliminarClase' clase.dia %}">Eliminar clase</a>
+                            <a href="{% url 'INEditarClase' clase.dia %}">Cambiar clase</a>
+
+                        </p>
+                    {% endfor %}
+
+                {% else %}
+
+                    <h3>No hay clases en este momento</h3>
+
+                {% endif %}
+                <br><br>
+
+
+
+                <!--Para la creacion del profesor-->
+                <a href="{% url 'INCrearProfesor' %}">Elecion de pofesor</a>
+                <!--  Para ver las clases   -->
+                {% if profesores %}
+                    {% for profesor in profesores %}
+                        <p>
+                            Sus profesor es {{ profesor.nombre_profe }} {{ profesor.apellido_profe }}.
+                            <br>
+                            <a href="{% url 'INEliminarProfesor' profesor.nombre_profe %}">Eliminar profesor</a>
+                            <a href="{% url 'INEditarProfesor' profesor.nombre_profe %}">Cambiar profesor</a>
+                        </p>
+                    {% endfor %}
+
+                {% else %}
+
+                    <h3>No hay profesor asignado en este momento</h3>
+
+                {% endif %}
+
+
+            </div>
 
             <hr>
         {% endfor %}

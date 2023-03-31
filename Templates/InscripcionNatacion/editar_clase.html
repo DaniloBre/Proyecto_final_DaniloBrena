@@ -3,10 +3,10 @@
 
 {% block cambia_contenido %}
 
-    <!--Edicion del usuario-->
-    <form action="{% url 'INEditarUsuario' nombre_usuario %}" method="post">
+    <!--Edicion del curso-->
+    <form action="{% url 'INEditarClase' dia %}" method="post">
         {% csrf_token %}
-        {{ form_edit_usuario.as_p }}
+        {{ form_edit_clase.as_p }}
         <input type="submit" value="Editar">
     </form>
 

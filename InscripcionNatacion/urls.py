@@ -11,12 +11,22 @@ urlpatterns = [
     path('usuarios/editar/<nombre_usuario>', editar_usuario, name='INEditarUsuario'),
     path('usuarios/eliminar/<nombre_usuario>', eliminar_usuario, name='INEliminarUsuario'),
 
+
     #Clase
-    path('clase', clase, name='INClase'),
+    path('clase', clases, name='INClases'),
     path('clase/crear', crear_clase, name='INCrearClase'),
-    path('clase/editar/<id>/', editar_usuario, name='INEditarClase'),
+    path('clase/<dia>/<horario>/', clase_creada, name='INClaseCreada'),
+    path('buscar_clase', buscar_clase, name='INBuscarCreada'),
+    path('clase/editar/<dia>/', editar_usuario, name='INEditarClase'),
+    path('clase/eliminar/<dia>/', eliminar_clase, name='INEliminarClase'),
+
 
     #Profesores
     path('profesor', profesores, name='INProfesores'),
+    path('profesor/crear', crear_clase, name='INCrearProfesor'),
+    path('profesor/<nombre_profe>/<apellido_profe>/', clase_creada, name='INProfesorCreada'),
+    path('buscar_clase', buscar_clase, name='INBuscarProfesor'),
+    path('profesor/editar/<nombre_profe>/', editar_usuario, name='INEditarProfesor'),
+    path('profesor/eliminar/<nombre_profe>/', eliminar_clase, name='INEliminarProfesor'),
 
 ]

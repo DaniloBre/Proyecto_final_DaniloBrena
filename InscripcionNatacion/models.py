@@ -8,7 +8,7 @@ from django.db import models
 #Modelo usuario
 class Usuario(models.Model):
     nombre = models.CharField(max_length=30)
-    nombre_usuario = models.CharField(max_length=30)
+    nombre_usuario = models.CharField(max_length=30, unique=True)
     contrasenia = models.CharField(max_length=30)
     email = models.EmailField()
 
@@ -41,18 +41,18 @@ class Clase(models.Model):
         ('19:00', '19:00'),
     )
 
-    dia = models.CharField(max_length=1, choices=Elecion_Dia)
+    dia = models.CharField(max_length=1, choices=Elecion_Dia, unique=True)
     horario = models.CharField(max_length=5, choices=Elechion_Hs)
 
     def __str__(self):
-        return f"Clase: {self.get_dia_display()} a las {self.horario}"
+        return f"Clase: {self.dia} a las {self.horario}"
 
 
 
 
 #Modelo elecion de profesor
 class Profesor(models.Model):
-    nombre_profe = models.CharField(max_length=30)
+    nombre_profe = models.CharField(max_length=30, unique=True)
     apellido_profe = models.CharField(max_length=30)
 
 

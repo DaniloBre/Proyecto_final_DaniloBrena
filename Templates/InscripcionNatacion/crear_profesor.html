@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Selecion de profesor{% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>Elecion de profesor</h1>
+
+  <!--Creacion/selecion de profesor-->
+  <form action="{% url 'INCrearProfesor' %}" method="POST" >
+    {% csrf_token %}
+    {{ form_profesor.as_p }}
+    <input  type="submit" value="Selecionar Profesor">
+
+  </form>
+
+{% endblock %}

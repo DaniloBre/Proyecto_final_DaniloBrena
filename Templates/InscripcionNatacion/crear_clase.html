@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear de clase{% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>Crearcion de clase</h1>
+
+  <!--Creacion/selecion de la clase-->
+  <form action="{% url 'INCrearClase' %}" method="POST" >
+    {% csrf_token %}
+    {{ form_clase.as_p }}
+    <input  type="submit" value="Crear clase">
+
+  </form>
+
+{% endblock %}
