@@ -24,6 +24,19 @@
 
 
 
+                <!--loging y logout-->
+                {% if user.is.authenticated %}
+                    <img src="{{ user.avatar.imagen.url }}" alt="Usuario" height="45 px">
+                    <a class="btn btn-secondary" href="{% url 'accountLogout' %}">Loging</a>
+
+                {% else %}
+                    <a class="btn btn-secondary" href="{% url 'accountRegistrar' %}">Registrar</a>
+                    <a class="btn btn-secondary" href="{% url 'accountLogin' %}">Logout</a>
+
+                {% endif %}
+
+
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 </div>

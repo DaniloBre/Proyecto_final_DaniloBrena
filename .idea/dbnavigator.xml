@@ -39,11 +39,23 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_user" active-filter-id="793f11c4-4a90-43a3-852e-c7e8b674534b">
+      <filter id="793f11c4-4a90-43a3-852e-c7e8b674534b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.sqlite_sequence" active-filter-id="621448c0-31b1-4bfa-9b42-5769a2c35a7e">
+      <filter id="621448c0-31b1-4bfa-9b42-5769a2c35a7e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_usuario" active-filter-id="787343e2-4e96-453f-85d3-2f62419d9f94">
       <filter id="787343e2-4e96-453f-85d3-2f62419d9f94" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_clase" active-filter-id="9880f631-9f84-4b85-b31a-bc4f9e0a4b29">
       <filter id="9880f631-9f84-4b85-b31a-bc4f9e0a4b29" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_session" active-filter-id="22f3f8a1-811d-494a-833d-0216076c293d">
+      <filter id="22f3f8a1-811d-494a-833d-0216076c293d" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_admin_log" active-filter-id="4c8a1744-f569-4be8-95cc-dcd375f3a047">
+      <filter id="4c8a1744-f569-4be8-95cc-dcd375f3a047" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_profesor" active-filter-id="d68bf928-f398-48e2-b395-78dcfa3a98e9">
       <filter id="d68bf928-f398-48e2-b395-78dcfa3a98e9" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
