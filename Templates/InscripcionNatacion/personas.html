@@ -4,27 +4,29 @@
 {% block title %}Inscripcion a Natacion{% endblock %}
 
 {% block cambia_contenido %}
-<!--  Para buscar los usuarios   -->
+
+    <h1>Creacion de formulario</h1>
+<!--  Para buscar las personas   -->
     <br><hr>
-    <form action="{% url 'INBuscarUsuarios' %}">
-        {{ busqueda_form_usuario.as_p }}
+    <form action="{% url 'INBuscarPersonas' %}">
+        {{ busqueda_form_personas.as_p }}
         <input type="submit" value="Buscar">
     </form>
 
-    <!--Para crear el usuario-->
+    <!--Para crear los formularios de personas-->
     <hr><br>
-    <a href="{% url 'INCrearUsuario' %}">Creacion del usuario</a>
+    <a href="{% url 'INCrearPersona' %}">Formulario de inscripcion</a>
+    <hr>
 
 
-<!--  Para ver los usuarios   -->
-    <hr><br>
-    {% if usuarios %}
-        {% for usuario in usuarios %}
+<!--  Para ver los formularios de personas   -->
+    {% if personas %}
+        {% for persona in personas %}
             <div>
-                Nombre: {{ usuario.nombre }} - Nombre de usuario: {{ usuario.nombre_usuario }}
+                Nombre: {{ persona.nombre }} - Apellido: {{ persona.apellido }}
                 <br>
-                <a href="{% url 'INEliminarUsuario' usuario.nombre_usuario %}">Eliminar usuario</a>
-                <a href="{% url 'INEditarUsuario' usuario.nombre_usuario %}">Editar usuario</a>
+                <a href="{% url 'INEliminarPersona' persona.apellido %}">Eliminar persona</a>
+                <a href="{% url 'INEditarPersona' persona.apellido %}">Editar persona</a>
                 <br><br>
 
 
@@ -79,7 +81,7 @@
 
     {% else %}
 
-        <h3>No hay datos en este momento</h3>
+        <h3>No hay datos en este momento, esta en desarrollo</h3>
 
     {% endif %}
 

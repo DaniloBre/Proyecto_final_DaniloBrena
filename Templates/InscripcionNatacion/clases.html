@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Listado de las clases{% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>clases</h1>
+
+
+                  <!--  Para ver las buscar el comentario   -->
+
+    <form action="{% url 'INBuscarClase' %}">
+        {{ busqueda_form_clase.as_p }}
+        <input type="submit" value="Buscar">
+    </form>
+
+    <hr>
+    <h3> EN esta pagina irian las temporadas, losmeses, dias y horario de las clases, a lo largo del año, junto con las actividades</h3>
+
+
+
+
+{% endblock %}

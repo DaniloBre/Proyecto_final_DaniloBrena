@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Listado de profesores {% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>Profesores</h1>
+
+
+                  <!--  Para ver las buscar el comentario   -->
+
+    <form action="{% url 'INBuscarProfesor' %}">
+        {{ busqueda_form_comentarios.as_p }}
+        <input type="submit" value="Buscar">
+    </form>
+
+    <hr>
+    <h3> EN esta pajina irian los profesores  junto con algunas de sus caracteristicas</h3>
+
+
+
+
+{% endblock %}

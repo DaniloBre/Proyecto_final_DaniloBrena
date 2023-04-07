@@ -4,12 +4,12 @@
 
 {% block cambia_contenido %}
 
-  <h1>Crear usuario</h1>
+  <h1>Crear formulario de persona</h1>
 
-  <!--Creacion del usuario-->
-  <form action="{% url 'INCrearUsuario' %}" method="POST" >
+  <!--Creacion de la persona-->
+  <form action="{% url 'INCrearPersona' %}" method="POST" >
     {% csrf_token %}
-    {{ form_usuario.as_p }}
+    {{ form_persona.as_p }}
     <input  type="submit" value="Crear">
 
   </form>

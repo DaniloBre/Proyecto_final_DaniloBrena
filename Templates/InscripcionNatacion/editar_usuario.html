@@ -4,7 +4,7 @@
 {% block cambia_contenido %}
 
     <!--Edicion del usuario-->
-    <form action="{% url 'INEditarUsuario' nombre_usuario %}" method="post">
+    <form action="{% url 'INEditarPersona' apellido %}" method="post">
         {% csrf_token %}
         {{ form_edit_usuario.as_p }}
         <input type="submit" value="Editar">

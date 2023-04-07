@@ -22,10 +22,10 @@ def login_account(request):
             if user:
                 login(request, user)
 
-                return redirect("INUsuarios")
+                return redirect("INPersonas")
 
             else:
-                return redirect("INClases")
+                return redirect("INComentarios")
 
     form = AuthenticationForm()
     context = {

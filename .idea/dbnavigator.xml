@@ -39,17 +39,29 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_user" active-filter-id="793f11c4-4a90-43a3-852e-c7e8b674534b">
-      <filter id="793f11c4-4a90-43a3-852e-c7e8b674534b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_user_user_permissions" active-filter-id="d5f5581e-84f0-49c6-ae82-7198d187af2e">
+      <filter id="d5f5581e-84f0-49c6-ae82-7198d187af2e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
-    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.sqlite_sequence" active-filter-id="621448c0-31b1-4bfa-9b42-5769a2c35a7e">
-      <filter id="621448c0-31b1-4bfa-9b42-5769a2c35a7e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_migrations" active-filter-id="a076ec75-f827-45e4-ae2e-fda6b45996a0">
+      <filter id="a076ec75-f827-45e4-ae2e-fda6b45996a0" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
-    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_usuario" active-filter-id="787343e2-4e96-453f-85d3-2f62419d9f94">
-      <filter id="787343e2-4e96-453f-85d3-2f62419d9f94" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_group_permissions" active-filter-id="376f137e-5045-4e78-bf3f-1c8bcb678fe6">
+      <filter id="376f137e-5045-4e78-bf3f-1c8bcb678fe6" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_datospersona" active-filter-id="f8e158da-2bbd-436b-aeec-e33899504714">
+      <filter id="f8e158da-2bbd-436b-aeec-e33899504714" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_content_type" active-filter-id="0638d1cc-aa55-4db8-9322-c1ded4ded7d9">
+      <filter id="0638d1cc-aa55-4db8-9322-c1ded4ded7d9" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.account_avatar" active-filter-id="e42a16c7-dc54-4a4e-9814-2b074fd2b074">
+      <filter id="e42a16c7-dc54-4a4e-9814-2b074fd2b074" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_clase" active-filter-id="9880f631-9f84-4b85-b31a-bc4f9e0a4b29">
       <filter id="9880f631-9f84-4b85-b31a-bc4f9e0a4b29" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_comentario" active-filter-id="a054c444-8440-42fa-8baa-ab44514d2dbf">
+      <filter id="a054c444-8440-42fa-8baa-ab44514d2dbf" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_session" active-filter-id="22f3f8a1-811d-494a-833d-0216076c293d">
       <filter id="22f3f8a1-811d-494a-833d-0216076c293d" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
@@ -57,8 +69,26 @@
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.django_admin_log" active-filter-id="4c8a1744-f569-4be8-95cc-dcd375f3a047">
       <filter id="4c8a1744-f569-4be8-95cc-dcd375f3a047" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_user" active-filter-id="793f11c4-4a90-43a3-852e-c7e8b674534b">
+      <filter id="793f11c4-4a90-43a3-852e-c7e8b674534b" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_user_groups" active-filter-id="23348f16-ad5e-4328-87c6-bb44209db4e0">
+      <filter id="23348f16-ad5e-4328-87c6-bb44209db4e0" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_group" active-filter-id="0ecb69ad-1d93-49e1-a920-752ae1c95791">
+      <filter id="0ecb69ad-1d93-49e1-a920-752ae1c95791" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.sqlite_sequence" active-filter-id="621448c0-31b1-4bfa-9b42-5769a2c35a7e">
+      <filter id="621448c0-31b1-4bfa-9b42-5769a2c35a7e" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_usuario" active-filter-id="787343e2-4e96-453f-85d3-2f62419d9f94">
+      <filter id="787343e2-4e96-453f-85d3-2f62419d9f94" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
     <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.InscripcionNatacion_profesor" active-filter-id="d68bf928-f398-48e2-b395-78dcfa3a98e9">
       <filter id="d68bf928-f398-48e2-b395-78dcfa3a98e9" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND" />
+    </filter-actions>
+    <filter-actions connection-id="827cfeef-016c-437a-9789-2dab8d6679df" dataset="main.auth_permission" active-filter-id="5f884d84-4517-45a8-bbfa-2ccd769417c7">
+      <filter id="5f884d84-4517-45a8-bbfa-2ccd769417c7" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND" />
     </filter-actions>
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">

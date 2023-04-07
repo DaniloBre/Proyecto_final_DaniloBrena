@@ -1,14 +1,14 @@
 from django import forms
-from InscripcionNatacion.models import Clase, Profesor, Usuario
+from InscripcionNatacion.models import Clase, Profesor, DatosPersona, Comentario
 
 
 #CREACIONES
 
-#Usuario
-class CrearUsuarioForm(forms.ModelForm):
+#Personas
+class CrearPersonaForm(forms.ModelForm):
 
     class Meta:
-        model = Usuario
+        model = DatosPersona
         fields = "__all__"
 
 
@@ -26,14 +26,19 @@ class CrearProfesorForm(forms.ModelForm):
         fields = "__all__"
 
 
+class CrearComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = "__all__"
+
 
 
 #BUSQUEDAS
 
 #Buscar Usuario
-class BuscarUsuarioForm(forms.Form):
+class BuscarPersonaForm(forms.Form):
 
-    nombre_usuario = forms.CharField(min_length=3, max_length=40)
+    apellido = forms.CharField(min_length=3, max_length=40)
 
 
 class BuscarClaseForm(forms.Form):
@@ -43,6 +48,10 @@ class BuscarClaseForm(forms.Form):
 
 class BuscarProfesorForm(forms.Form):
 
-    dia = forms.CharField(min_length=3, max_length=30)
+    nombre_profe = forms.CharField(min_length=3, max_length=30)
 
+
+class BuscarComentarioForm(forms.Form):
+
+    nombre_comenta = forms.CharField(min_length=3, max_length=30)
 

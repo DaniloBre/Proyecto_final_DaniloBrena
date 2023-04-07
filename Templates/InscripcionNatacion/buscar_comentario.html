@@ -3,10 +3,10 @@
 
 
 {% block cambia_contenido %}
-    {% if personas %}
+    {% if comentarios %}
 
-        {% for persona in personas %}
-            <p>{{ persona }}</p>
+        {% for comentario in comentarios %}
+            <p>{{ nombre_comenta }}</p>
         {% endfor %}
 
     {% else %}

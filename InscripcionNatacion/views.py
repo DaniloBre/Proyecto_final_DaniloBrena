@@ -1,70 +1,78 @@
+
+
 from django.shortcuts import render, redirect
-from InscripcionNatacion.models import Usuario, Profesor, Clase
-from InscripcionNatacion.forms import (CrearUsuarioForm, CrearClaseForm, CrearProfesorForm,
-                                       BuscarUsuarioForm, BuscarClaseForm, BuscarProfesorForm,
+from InscripcionNatacion.models import DatosPersona, Profesor, Clase, Comentario
+from InscripcionNatacion.forms import (CrearPersonaForm, CrearClaseForm, CrearProfesorForm, CrearComentarioForm,
+                                       BuscarPersonaForm, BuscarClaseForm, BuscarProfesorForm, BuscarComentarioForm
                                        )
 
 
 
 # Usuario
-def usuarios(request):
-    all_usuarios = Usuario.objects.all()
+def personas(request):
+    all_personas = DatosPersona.objects.all()
     context = {
-        "usuarios": all_usuarios,
-        "busqueda_form_usuario": BuscarUsuarioForm(),
+        "personas": all_personas,
+        "busqueda_form_personas": BuscarPersonaForm(),
     }
-    return render(request, "InscripcionNatacion/usuarios.html", context=context)
+    return render(request, "InscripcionNatacion/personas.html", context=context)
 
 
 
-#Usuario que ya fue creado
-def crear_usuario(request):
+#Persona que ya fue creado
+def crear_persona(request):
     if request.method == 'POST':
-        formulario = CrearUsuarioForm(request.POST)
+        formulario = CrearPersonaForm(request.POST)
 
         if formulario.is_valid():
-            info_usuario = formulario.cleaned_data
-            save_usuario = Usuario(
-                nombre=info_usuario['nombre'],
-                nombre_usuario=info_usuario['nombre_usuario'],
-                contrasenia=info_usuario['contrasenia'],
-                email=info_usuario['email'],
+            info_persona = formulario.cleaned_data
+            save_persona = DatosPersona(
+                persona=info_persona['persona'],
+                nombre=info_persona['nombre'],
+                apellido=info_persona['apellido'],
+                edad=info_persona['edad'],
+                email=info_persona['email'],
+                genero=info_persona['genero'],
+                numero_documento=info_persona['numero_documento']
             )
-            save_usuario.save()
-            return redirect("INUsuarios")
+            save_persona.save()
+            return redirect("INPersonas")
 
-    context ={
-        "form_usuario": CrearUsuarioForm(),
+    context = {
+        "form_persona": CrearPersonaForm(),
     }
     return render(request, 'InscripcionNatacion/crear_usuario.html', context)
 
 
 
-#Creacion de usuario
-def usuario_creado(request, nombre, nombre_usuario, contrasenia, email):
-    save_usuario = Usuario(
+#Creacion de persona
+def persona_creado(request, persona, nombre, apellido, edad, email, genero, numero_documento):
+    save_persona = DatosPersona(
+        persona=persona,
         nombre=nombre,
-        nombre_usuario=nombre_usuario,
-        contrasenia=contrasenia,
-        email=email
+        apellido=apellido,
+        edad=edad,
+        email=email,
+        genero=genero,
+        numero_documento=numero_documento
     )
-    save_usuario.save()
+    save_persona.save()
     context = {
-        "nombre_usuario": nombre_usuario,
+        "apellido": apellido,
     }
     return render(request, "InscripcionNatacion/guardar_usuario.html", context)
 
 
 
 #Busqueda de usuario
-def buscar_usuarios(request):
-    usaurio_form = BuscarUsuarioForm(request.get)
+def buscar_persona(request):
+    persona_form = BuscarPersonaForm(request.GET)
 
-    if usaurio_form.is_valid():
-        info_usuario = usaurio_form.cleaned_data
-        filtra_usuario = Usuario.objects.filter(nombre_usuario__icontains=info_usuario['nombre_usuario'])
+    if persona_form.is_valid():
+        info_persona = persona_form.cleaned_data
+        filtra_persona = DatosPersona.objects.filter(apellido__icontains=info_persona['apellido'])
         context ={
-            "nombre_usuario": filtra_usuario
+            "apellido": filtra_persona
         }
 
         return render(request, "InscripcionNatacion/buscar_usuarios.html", context=context)
@@ -72,28 +80,32 @@ def buscar_usuarios(request):
 
 
 #Edicion de usuario
-def editar_usuario(request, nombre_usuario):
-    get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
+def editar_persona(request, apellido):
+    get_persona = DatosPersona.objects.get(apellido=apellido)
 
     if request.method == 'POST':
 
-        info_usuario = request.POST
-        print(info_usuario)
-        get_usuario.nombre = info_usuario['nombre']
-        get_usuario.nombre_usuario = info_usuario['nombre_usuario']
-        get_usuario.contrasenia = info_usuario['contrasenia']
-        get_usuario.email = info_usuario['email']
+        info_persona = request.POST
+        print(info_persona)
+        get_persona.persona = info_persona['persona']
+        get_persona.nombre = info_persona['nombre']
+        get_persona.apellido = info_persona['apellido']
+        get_persona.email = info_persona['email']
+        get_persona.genero = info_persona['genero']
+        get_persona.numero_documento = info_persona['numero_documento']
 
-        get_usuario.save()
-        return redirect("INUsuarios")
+        get_persona.save()
+        return redirect("INPersonas")
 
     context = {
-        "nombre_usuario": nombre_usuario,
-        "form_edit_usuario": CrearUsuarioForm(initial={
-            "nombre": get_usuario.nombre,
-            "nombre_usuario": get_usuario.nombre_usuario,
-            "contrasenia": get_usuario.contrasenia,
-            "email": get_usuario.email
+        "apellido": apellido,
+        "form_edit_personas": CrearPersonaForm(initial={
+            "persona": get_persona.persona,
+            "nombre": get_persona.nombre,
+            "apellido": get_persona.apellido,
+            "email": get_persona.email,
+            "genero": get_persona.genero,
+            "numero_documento": get_persona.numero_documento
         })
     }
 
@@ -102,11 +114,11 @@ def editar_usuario(request, nombre_usuario):
 
 
 #Eliminacion de usuario
-def eliminar_usuario(request, nombre_usuario):
-    get_usuario = Usuario.objects.get(nombre_usuario=nombre_usuario)
-    get_usuario.delete()
+def eliminar_persona(request, apellido):
+    get_persona = DatosPersona.objects.get(apellido=apellido)
+    get_persona.delete()
 
-    return redirect("INUsuarios")
+    return redirect("INPersonas")
 
 
 
@@ -121,7 +133,7 @@ def clases(request):
         "clases": all_clase,
         "busqueda_form_clase": BuscarClaseForm(),
     }
-    return render(request, "InscripcionNatacion/usuarios.html", context=context)
+    return render(request, "InscripcionNatacion/personas.html", context=context)
 
 
 
@@ -133,11 +145,12 @@ def crear_clase(request):
         if form_clas.is_valid():
             info_clase = form_clas.cleaned_data
             save_clase = Clase(
+                nivel=info_clase['nivel'],
                 dia=info_clase['dia'],
                 horario=info_clase['horario'],
             )
             save_clase.save()
-            return redirect('INUsuarios')
+            return redirect('INPersonas')
 
     context ={
         "form_clase": CrearClaseForm(),
@@ -148,8 +161,9 @@ def crear_clase(request):
 
 
 #Creacion de clase
-def clase_creada(request, dia, horario):
+def clase_creada(request,nivel , dia, horario):
     save_clase = Clase(
+        nivel=nivel,
         dia=dia,
         horario=horario,
     )
@@ -163,7 +177,7 @@ def clase_creada(request, dia, horario):
 
 #Busqueda de clase
 def buscar_clase(request):
-    clase_form = BuscarClaseForm(request.get)
+    clase_form = BuscarClaseForm(request.GET)
 
     if clase_form.is_valid():
         info_clase = clase_form.cleaned_data
@@ -172,7 +186,7 @@ def buscar_clase(request):
             "dia": filtra_clase
         }
 
-        return render(request, "InscripcionNatacion/buscar_usuarios.html", context=context)
+        return render(request, "InscripcionNatacion/buscar_clase.html", context=context)
 
 
 
@@ -184,15 +198,17 @@ def editar_clase(request, dia):
 
         info_clase = request.POST
         print(info_clase)
+        get_clase.nivel = info_clase['nivel']
         get_clase.dia = info_clase['dia']
         get_clase.horario = info_clase['horario']
 
         get_clase.save()
-        return redirect('INUsuarios')
+        return redirect('INPersonas')
 
     context ={
         "dia": dia,
         "form_edit_clase": CrearClaseForm(initial={
+            "nivel": get_clase.nivel,
             "dia": get_clase.dia,
             "horario": get_clase.horario
         })
@@ -207,7 +223,7 @@ def eliminar_clase (request, dia):
     get_clase = Clase.objects.get(dia=dia)
     get_clase.delete()
 
-    return redirect("INUsuarios")
+    return redirect("INPersonas")
 
 
 
@@ -223,7 +239,7 @@ def profesores(request):
         "busqueda_form_profe": BuscarProfesorForm(),
     }
 
-    return render(request, "InscripcionNatacion/usuarios.html", context=context)
+    return render(request, "InscripcionNatacion/personas.html", context=context)
 
 
 
@@ -236,10 +252,10 @@ def crear_profesor(request):
             info_profe = form_profe.cleaned_data
             save_profe = Profesor(
                 nombre_profe=info_profe['nombre_profe'],
-                apellido_profe=info_profe['apellido_profe'],
+                email_profe=info_profe['email_profe'],
             )
             save_profe.save()
-            return redirect('INUsuarios')
+            return redirect('INPersonas')
 
     context = {
         "form_profesor": CrearProfesorForm(),
@@ -250,10 +266,10 @@ def crear_profesor(request):
 
 
 #Profesor de clase
-def profesor_creada(request, nombre_profe, apellido_profe):
+def profesor_creada(request, nombre_profe, email_profe):
     save_profe = Profesor(
         nombre_profe=nombre_profe,
-        apellido_profe=apellido_profe,
+        email_profe=email_profe,
     )
     save_profe.save()
     context = {
@@ -265,7 +281,7 @@ def profesor_creada(request, nombre_profe, apellido_profe):
 
 #Busqueda de profesor
 def buscar_profesor(request):
-    profe_form = BuscarProfesorForm(request.get)
+    profe_form = BuscarProfesorForm(request.GET)
 
     if profe_form.is_valid():
         info_profe = profe_form.cleaned_data
@@ -274,7 +290,7 @@ def buscar_profesor(request):
             "nombre_profe": filtra_profe
         }
 
-        return render(request, "InscripcionNatacion/buscar_usuarios.html", context=context)
+        return render(request, "InscripcionNatacion/buscar_profesor.html", context=context)
 
 
 
@@ -290,7 +306,7 @@ def editar_profesor(request, nombre_profe):
         get_profesor.apellido_profe = info_profe['apellido_profe']
 
         get_profesor.save()
-        return redirect('INUsuarios')
+        return redirect('INPersonas')
 
     context ={
         "nombre_profe": nombre_profe,
@@ -309,10 +325,73 @@ def eliminar_profesor (request, nombre_profe):
     get_profe = Profesor.objects.get(nombre_profe=nombre_profe)
     get_profe.delete()
 
-    return redirect("INUsuarios")
+    return redirect("INPersonas")
 
 
 
+
+
+#Comentario
+def comentarios(request):
+    all_comentarios = Comentario.objects.all()
+    context ={
+        "comentarios": all_comentarios,
+        "busqueda_form_comentarios": BuscarComentarioForm
+    }
+    return render(request, "InscripcionNatacion/comentarios.html", context=context)
+
+
+
+#Comentario que ya fue creado
+def crear_comentario(request):
+    if request.method == "POST":
+        formulario = CrearComentarioForm(request.POST)
+
+        if formulario.is_valid():
+            info_comentario = formulario.cleaned_data
+            save_comentario = Comentario(
+                nombre_comenta=info_comentario['nombre_comenta'],
+                email_comenta=info_comentario['email_comenta'],
+                tipo_coemtario=info_comentario['tipo_coemtario'],
+                mensaje=info_comentario['mensaje']
+            )
+            save_comentario.save()
+            return redirect("INComentarios")
+
+    context ={
+        "form_comentario": CrearComentarioForm(),
+    }
+    return render(request, "InscripcionNatacion/crear_comentario.html", context)
+
+
+
+#Creacion del comentario
+def comentario_creado(request, nombre_comenta, email_comenta, tipo_coemtario, mensaje):
+    save_comentario = Comentario(
+        nombre_comenta=nombre_comenta,
+        email_comenta=email_comenta,
+        tipo_coemtario=tipo_coemtario,
+        mensaje=mensaje
+    )
+    save_comentario.save()
+    context ={
+        "nombre_comenta": nombre_comenta
+    }
+    return render(request, "InscripcionNatacion/guardar_comentario.html", context)
+
+
+
+#Buscar comentario a traves de la persona
+def buscar_comentario(request):
+    comentario_form = BuscarComentarioForm(request.GET)
+
+    if comentario_form.is_valid():
+        info_comentario = comentario_form.cleaned_data
+        filtrar_comentario = Comentario.objects.filter(nombre_comenta__icontains=info_comentario['nombre_comenta'])
+        context ={
+            "nombre_comenta": filtrar_comentario
+        }
+        return render(request, "InscripcionNatacion/buscar_comentario.html", context=context)
 
 
 

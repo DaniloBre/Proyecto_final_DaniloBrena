@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Deje su comentario{% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>Comentario</h1>
+
+  <!--Creacion/selecion de profesor-->
+  <form action="{% url 'INCrearComentarios' %}" method="POST" >
+    {% csrf_token %}
+    {{ form_comentario.as_p }}
+    <input  type="submit" value="Enviar comentario">
+
+  </form>
+
+{% endblock %}

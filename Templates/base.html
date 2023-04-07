@@ -18,20 +18,21 @@
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'INUsuarios' %}">Usuarios</a>
+                <a class="navbar-brand" href="{% url 'INPersonas' %}">Inscripcion</a>
                 <a class="navbar-brand" href="{% url 'INClases' %}">Clases</a>
                 <a class="navbar-brand" href="{% url 'INProfesores' %}">Profesor</a>
+                <a class="navbar-brand" href="{% url 'INComentarios' %}">Comentarios</a>
 
 
 
                 <!--loging y logout-->
                 {% if user.is.authenticated %}
-                    <img src="{{ user.avatar.imagen.url }}" alt="Usuario" height="45 px">
-                    <a class="btn btn-secondary" href="{% url 'accountLogout' %}">Loging</a>
+                    <img src="{{ user.avatar.imagen.url }}" alt="Persona" height="45 px">
+                    <a class="btn btn-secondary" href="{% url 'accountLogout' %}">Logout</a>
 
                 {% else %}
                     <a class="btn btn-secondary" href="{% url 'accountRegistrar' %}">Registrar</a>
-                    <a class="btn btn-secondary" href="{% url 'accountLogin' %}">Logout</a>
+                    <a class="btn btn-secondary" href="{% url 'accountLogin' %}">Login</a>
 
                 {% endif %}
 

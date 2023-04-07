@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Deje su comentario{% endblock %}
+
+{% block cambia_contenido %}
+
+  <h1>Comentario</h1>
+
+
+                  <!--  Para ver las buscar el comentario   -->
+
+    <form action="{% url 'INBuscarComentarios' %}">
+        {{ busqueda_form_comentarios.as_p }}
+        <input type="submit" value="Buscar">
+    </form>
+
+
+  <!--Para ver el comentario -->
+<a href="{% url 'INCrearComentarios' %}">Crearcion de clase</a>
+<hr>
+
+
+    {% if comentarios %}
+        {% for comentario in comentarios %}
+        <p>
+            Nombre: {{ comentario.nombre_comenta }}
+            <br>
+             Tipo de comentario: {{ comentario.tipo_coemtario }}
+            <br>
+            Comentario: {{ comentario.mensaje }}
+
+        </p>
+        <hr>
+    {% endfor %}
+
+    {% else %}
+
+        <h3>No hay comentario en este momento</h3>
+
+    {% endif %}
+
+{% endblock %}
