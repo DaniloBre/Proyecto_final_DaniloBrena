@@ -36,18 +36,18 @@
                 <!--  Para ver las clases   -->
                 {% if clases %}
                     {% for clase in clases %}
-                        <p>
+                        <div>
                             Sus clases son los dias {{ clase.dia }} a las {{ clase.horario }} hs.
                             <br>
                             <a href="{% url 'INEliminarClase' clase.dia %}">Eliminar clase</a>
                             <a href="{% url 'INEditarClase' clase.dia %}">Cambiar clase</a>
 
-                        </p>
+                        </div>
                     {% endfor %}
 
                 {% else %}
 
-                    <h3>No hay clases en este momento</h3>
+                    <h3>No hay clases selecionadas en este momento</h3>
 
                 {% endif %}
                 <br>
@@ -59,12 +59,12 @@
                 <!--  Para ver las clases   -->
                 {% if profesores %}
                     {% for profesor in profesores %}
-                        <p>
+                        <div>
                             Sus profesor es {{ profesor.nombre_profe }} {{ profesor.apellido_profe }}.
                             <br>
                             <a href="{% url 'INEliminarProfesor' profesor.nombre_profe %}">Eliminar profesor</a>
                             <a href="{% url 'INEditarProfesor' profesor.nombre_profe %}">Cambiar profesor</a>
-                        </p>
+                        </div>
                     {% endfor %}
 
                 {% else %}

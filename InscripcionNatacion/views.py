@@ -1,11 +1,11 @@
-
-
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect
 from InscripcionNatacion.models import DatosPersona, Profesor, Clase, Comentario
 from InscripcionNatacion.forms import (CrearPersonaForm, CrearClaseForm, CrearProfesorForm, CrearComentarioForm,
                                        BuscarPersonaForm, BuscarClaseForm, BuscarProfesorForm, BuscarComentarioForm
                                        )
-
 
 
 # Usuario
@@ -41,11 +41,12 @@ def crear_persona(request):
     context = {
         "form_persona": CrearPersonaForm(),
     }
-    return render(request, 'InscripcionNatacion/crear_usuario.html', context)
+    return render(request, 'InscripcionNatacion/crear_usuario.html', context=context)
 
 
 
 #Creacion de persona
+@login_required
 def persona_creado(request, persona, nombre, apellido, edad, email, genero, numero_documento):
     save_persona = DatosPersona(
         persona=persona,
@@ -80,6 +81,7 @@ def buscar_persona(request):
 
 
 #Edicion de usuario
+@login_required
 def editar_persona(request, apellido):
     get_persona = DatosPersona.objects.get(apellido=apellido)
 
@@ -114,6 +116,7 @@ def editar_persona(request, apellido):
 
 
 #Eliminacion de usuario
+@login_required
 def eliminar_persona(request, apellido):
     get_persona = DatosPersona.objects.get(apellido=apellido)
     get_persona.delete()
@@ -161,6 +164,7 @@ def crear_clase(request):
 
 
 #Creacion de clase
+@login_required
 def clase_creada(request,nivel , dia, horario):
     save_clase = Clase(
         nivel=nivel,
@@ -182,7 +186,7 @@ def buscar_clase(request):
     if clase_form.is_valid():
         info_clase = clase_form.cleaned_data
         filtra_clase = Clase.objects.filter(dia__icontains=info_clase['dia'])
-        context ={
+        context = {
             "dia": filtra_clase
         }
 
@@ -191,6 +195,7 @@ def buscar_clase(request):
 
 
 #Edicion de clase
+@login_required
 def editar_clase(request, dia):
     get_clase = Clase.objects.get(dia=dia)
 
@@ -219,6 +224,7 @@ def editar_clase(request, dia):
 
 
 #Eliminar clase
+@login_required
 def eliminar_clase (request, dia):
     get_clase = Clase.objects.get(dia=dia)
     get_clase.delete()
@@ -266,6 +272,7 @@ def crear_profesor(request):
 
 
 #Profesor de clase
+@login_required
 def profesor_creada(request, nombre_profe, email_profe):
     save_profe = Profesor(
         nombre_profe=nombre_profe,
@@ -295,6 +302,7 @@ def buscar_profesor(request):
 
 
 #Edicion de profesor
+@login_required
 def editar_profesor(request, nombre_profe):
     get_profesor = Profesor.objects.get(nombre_profe=nombre_profe)
 
@@ -321,6 +329,7 @@ def editar_profesor(request, nombre_profe):
 
 
 #Eliminar profesor
+@login_required
 def eliminar_profesor (request, nombre_profe):
     get_profe = Profesor.objects.get(nombre_profe=nombre_profe)
     get_profe.delete()
@@ -361,7 +370,7 @@ def crear_comentario(request):
     context ={
         "form_comentario": CrearComentarioForm(),
     }
-    return render(request, "InscripcionNatacion/crear_comentario.html", context)
+    return render(request, "InscripcionNatacion/crear_comentario.html", context=context)
 
 
 

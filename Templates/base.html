@@ -26,9 +26,11 @@
 
 
                 <!--loging y logout-->
-                {% if user.is.authenticated %}
+                {% if user.is_authenticated %}
+                    <a class="btn btn-secondary">{{ user.username }}</a>
                     <img src="{{ user.avatar.imagen.url }}" alt="Persona" height="45 px">
                     <a class="btn btn-secondary" href="{% url 'accountLogout' %}">Logout</a>
+                    <a class="btn btn-secondary" href="{% url 'accountEditUsuario' %}">Edito de usuario</a>
 
                 {% else %}
                     <a class="btn btn-secondary" href="{% url 'accountRegistrar' %}">Registrar</a>

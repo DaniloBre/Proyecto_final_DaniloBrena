@@ -16,22 +16,23 @@
 
 
   <!--Para ver el comentario -->
-<a href="{% url 'INCrearComentarios' %}">Crearcion de clase</a>
+<a href="{% url 'INCrearComentarios' %}">Deje su comentario</a>
 <hr>
 
 
     {% if comentarios %}
         {% for comentario in comentarios %}
-        <p>
+        <div>
             Nombre: {{ comentario.nombre_comenta }}
             <br>
              Tipo de comentario: {{ comentario.tipo_coemtario }}
             <br>
             Comentario: {{ comentario.mensaje }}
 
-        </p>
+
+        </div>
         <hr>
-    {% endfor %}
+        {% endfor %}
 
     {% else %}
 

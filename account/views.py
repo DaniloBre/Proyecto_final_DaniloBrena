@@ -1,3 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import DeleteView
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -8,6 +11,26 @@ from account.models import Avatar
 
 
 # Create your views here.
+
+
+def register_account(request):
+
+    if request.method =="POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("accountLogin")
+
+    form = UserRegisterForm()
+    context = {
+        "form": form,
+        "titulo": "Registra usuario",
+        "enviar": "Registrar"
+    }
+    return render(request, "form.html", context=context)
+
+
+
 
 
 def login_account(request):
@@ -38,25 +61,7 @@ def login_account(request):
 
 
 
-def register_account(request):
-
-    if request.method =="POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return  redirect("accountLogin")
-
-    form = UserRegisterForm()
-    context = {
-        "form": form,
-        "titulo": "Registra usuario",
-        "enviar": "Registrar"
-    }
-    return render(request, "form.html", context=context)
-
-
-
-
+@login_required
 def edit_usuario(request):
 
     user = request.user
@@ -69,7 +74,6 @@ def edit_usuario(request):
 
             user.username = informacion["username"]
             user.email = informacion["email"]
-            user.is_staff = informacion["is_staff"]
 
             try:
                 user.avatar.imagen = informacion["imagen"]
@@ -79,19 +83,18 @@ def edit_usuario(request):
 
 
             form.save()
-            return redirect("account")
+            return redirect("accountLogin")
 
 
     form = UserRegisterForm(initial={
         "username": user.name,
-        "email":user.email,
-        "is_staff": user.is_staff
+        "email": user.email,
     })
 
     context = {
         "form": form,
         "titulo": "Editar Usuario",
-        "nviar": "Editar"
+        "enviar": "Editar"
     }
 
     return render(request, "form.html", context=context)
